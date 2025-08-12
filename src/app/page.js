@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-
+import { useRouter } from "next/navigation";
 const page = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); // 'success' or 'error'
+  const [messageType, setMessageType] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,9 +48,7 @@ const page = () => {
     }
   };
   return (
-    <div
-     
-    >
+    <div>
       <div>
         <Image
           src="/logo.svg"
@@ -93,6 +92,9 @@ const page = () => {
           <Image
             src={"/link.svg"}
             alt="Link Icon"
+            onClick={() =>
+              router.push("https://www.linkedin.com/company/all-my-ai/")
+            }
             width={64}
             height={64}
             className="mt-4 cursor-pointer"
@@ -101,6 +103,7 @@ const page = () => {
             src={"/x.svg"}
             alt="Link Icon"
             width={64}
+            onClick={() => router.push("https://x.com/AllMyAiofficial")}
             height={64}
             className="mt-4 cursor-pointer"
           />
@@ -108,6 +111,7 @@ const page = () => {
             src={"/main.svg"}
             alt="Link Icon"
             width={64}
+            onClick={() => router.push("/admin")}
             height={64}
             className="mt-4 cursor-pointer"
           />
