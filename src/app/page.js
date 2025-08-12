@@ -1,30 +1,30 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 
 const page = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState(''); // 'success' or 'error'
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState(""); // 'success' or 'error'
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!email) {
-      setMessage('Please enter your email');
-      setMessageType('error');
+      setMessage("Please enter your email");
+      setMessageType("error");
       return;
     }
 
     setIsLoading(true);
-    setMessage('');
+    setMessage("");
 
     try {
-      const response = await fetch('/api/emails', {
-        method: 'POST',
+      const response = await fetch("/api/emails", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
       });
@@ -32,31 +32,23 @@ const page = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Thank you! You\'ve been added to our early access list.');
-        setMessageType('success');
-        setEmail(''); // Clear the input
+        setMessage("Thank you! You've been added to our early access list.");
+        setMessageType("success");
+        setEmail(""); // Clear the input
       } else {
-        setMessage(data.error || 'Something went wrong. Please try again.');
-        setMessageType('error');
+        setMessage(data.error || "Something went wrong. Please try again.");
+        setMessageType("error");
       }
     } catch (error) {
-      setMessage('Network error. Please check your connection and try again.');
-      setMessageType('error');
+      setMessage("Network error. Please check your connection and try again.");
+      setMessageType("error");
     } finally {
       setIsLoading(false);
     }
   };
   return (
     <div
-      style={{
-        backgroundImage: "url('/bg.svg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+     
     >
       <div>
         <Image
@@ -66,29 +58,34 @@ const page = () => {
           height={500}
           className="w-[90vw] mx-auto"
         />
-        <form onSubmit={handleSubmit} className="bg-[#2A2d6a] text-[18px] flex w-[90%] lg:w-[700px] mx-auto  font-normal text-white h-[78px] justify-between items-center px-4 rounded-full mt-14">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-[#2A2d6a] text-[18px] flex w-[90%] lg:w-[700px] mx-auto  font-normal text-white h-[64px] lg:h-[78px] justify-between items-center px-3 lg:px-4 rounded-full mt-14"
+        >
           <input
             type="email"
             placeholder="Your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="bg-transparent placeholder:text-white border-none outline-none w-full"
+            className="bg-transparent placeholder:text-white border-none text-[16px] lg:text-[18px] outline-none w-full"
             disabled={isLoading}
           />
-          <button 
+          <button
             type="submit"
             disabled={isLoading}
-            className="bg-[#bdff00] whitespace-nowrap cursor-pointer text-[#1B1F3B] text-[18px] font-normal px-4 h-[54px] flex justify-center items-center rounded-full ml-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-[#bdff00] whitespace-nowrap cursor-pointer text-[#1B1F3B] text-[16px] lg:text-[18px] font-normal px-4 h-[48px] lg:h-[54px] flex justify-center items-center rounded-full ml-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? 'Saving...' : 'Get early access'}
+            {isLoading ? "Saving..." : "Get early access"}
           </button>
         </form>
-        
+
         {/* Message display */}
         {message && (
-          <div className={`text-center mt-4 text-[16px] ${
-            messageType === 'success' ? 'text-[#bdff00]' : 'text-red-400'
-          }`}>
+          <div
+            className={`text-center mt-4 text-[16px] ${
+              messageType === "success" ? "text-[#bdff00]" : "text-red-400"
+            }`}
+          >
             {message}
           </div>
         )}
