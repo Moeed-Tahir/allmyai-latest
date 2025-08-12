@@ -111,7 +111,7 @@ const page = () => {
             src={"/main.svg"}
             alt="Link Icon"
             width={64}
-            onClick={() => router.push("/admin")}
+            onClick={() => router.push("mailto:support@allmyai.ai")}
             height={64}
             className="mt-4 cursor-pointer"
           />
