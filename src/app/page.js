@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FiInstagram } from "react-icons/fi";
 const page = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -81,14 +82,13 @@ const page = () => {
         {/* Message display */}
         {message && (
           <div
-            className={`text-center mt-4 text-[16px] ${
-              messageType === "success" ? "text-[#bdff00]" : "text-red-400"
-            }`}
+            className={`text-center mt-4 text-[16px] ${messageType === "success" ? "text-[#bdff00]" : "text-red-400"
+              }`}
           >
             {message}
           </div>
         )}
-        <div className="flex  justify-center gap-[21px] items-center mt-8">
+        <div className="flex justify-center gap-[21px] items-center mt-8 ">
           <Image
             src={"/link.svg"}
             alt="Link Icon"
@@ -115,10 +115,16 @@ const page = () => {
             height={64}
             className="mt-4 cursor-pointer"
           />
+          <div className="flex justify-center items-center rounded-full border-gray-500 border-[1px] w-[64px] h-[64px] mt-4">
+            <FiInstagram
+              className="cursor-pointer text-white"
+              size={32}
+              onClick={() => router.push("https://www.instagram.com/allmyai/")}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
 };
 
 export default page;
