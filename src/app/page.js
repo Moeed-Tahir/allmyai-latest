@@ -49,7 +49,17 @@ const page = () => {
     }
   };
   return (
-    <div>
+    <div
+
+      style={{
+        backgroundImage: "url('/bg.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
       <div>
         <Image
           src="/logo.svg"
