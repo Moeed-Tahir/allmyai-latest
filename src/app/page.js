@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiInstagram } from "react-icons/fi";
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -137,4 +137,4 @@ const page = () => {
     </div>);
 };
 
-export default page;
+export default Page;
