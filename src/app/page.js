@@ -50,7 +50,6 @@ const page = () => {
   };
   return (
     <div
-
       style={{
         backgroundImage: "url('/bg.svg')",
         backgroundSize: "cover",
