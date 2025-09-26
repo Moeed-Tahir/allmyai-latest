@@ -61,7 +61,7 @@ const Page = () => {
       }}>
       <div>
         <Image
-          src="/logo.svg"
+          src="/Logo.svg"
           alt="Description"
           width={500}
           height={500}
